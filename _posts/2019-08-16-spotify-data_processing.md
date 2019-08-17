@@ -26,7 +26,7 @@ loved_dataframe = pd.read_pickle("data/loved_dataframe.pkl")
 hated_dataframe = pd.read_pickle("data/hated_dataframe.pkl")
 ```
 
-# Data processing and feature engineering 
+## 1 - Data processing and feature engineering 
 
 Before we merge our two dataframes into one, we want to identify the songs we like and the ones we don't so the first thing to do is to add a new column to differentiate the target variable.
 

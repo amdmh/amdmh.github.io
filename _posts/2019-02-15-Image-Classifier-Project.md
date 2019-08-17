@@ -1,9 +1,7 @@
 ---
 layout: post
-comments: true
 title:  "Udacity Data Science Nanodegree : Image Classifier Project"
-date:   2019-02-15 13:36:15
-tags: udacity python jupyter-notebook deep-learning neural-networks image-classification pytorch
+tags: spotify spotipy python jupyter-notebook machine-learning 
 ---
 
 

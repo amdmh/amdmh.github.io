@@ -8,9 +8,9 @@ tags: spotify spotipy python jupyter-notebook machine-learning
 Is a machine-learning model able to predict my musical tastes? That is the question behind this project. Music lover in my heart, music has been the rhythm of my life since my earliest years. From rock to rap, classical to folk, I have a strong taste for eclecticism. What better way to answer to that question than by exploring the Spotify API in more depth?
 
 
-# Collecting data from the Spotify Web API using Spotipy
+## Collecting data from the Spotify Web API using Spotipy
 
-## Objective of the notebook
+### Objective of the notebook
 Our goal is to show how to collect audio features data for tracks from the official Spotify Web API for further analysis. As mentioned above, each step of the process will have its own notebook associated with it
 
 ## 1 - Setting Up

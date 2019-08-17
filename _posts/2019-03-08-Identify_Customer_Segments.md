@@ -81,69 +81,8 @@ azdias.head()
 features.head()
 ```
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/Identify_Customer_Segments_HEAD_features.png)
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>attribute</th>
-      <th>information_level</th>
-      <th>type</th>
-      <th>missing_or_unknown</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>AGER_TYP</td>
-      <td>person</td>
-      <td>categorical</td>
-      <td>[-1,0]</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>ALTERSKATEGORIE_GROB</td>
-      <td>person</td>
-      <td>ordinal</td>
-      <td>[-1,0,9]</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ANREDE_KZ</td>
-      <td>person</td>
-      <td>categorical</td>
-      <td>[-1,0]</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>CJT_GESAMTTYP</td>
-      <td>person</td>
-      <td>categorical</td>
-      <td>[0]</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>FINANZ_MINIMALIST</td>
-      <td>person</td>
-      <td>ordinal</td>
-      <td>[-1]</td>
-    </tr>
-  </tbody>
-</table>
-</div>
 
 
 ## Step 1: Preprocessing
@@ -1287,74 +1226,7 @@ azdias_encoded.head()
 azdias_encoded[['CAMEO_INTL_2015']].head(10)
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CAMEO_INTL_2015</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>51</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>24</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>43</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>54</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>15</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/Identify_Customer_Segments_cameo_features.png)
 
 
 

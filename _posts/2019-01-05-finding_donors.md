@@ -1,10 +1,9 @@
 ---
 layout: post
-comments: true
 title:  "Udacity Data Science Nanodegree : Finding Donors for CharityML"
-date:   2019-01-05 09:22:15
 tags: udacity python jupyter-notebook machine-learning supervised-learning
 ---
+
 
 ## Getting Started
 

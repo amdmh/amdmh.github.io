@@ -1,8 +1,6 @@
 ---
 layout: post
-comments: true
-title:  "Udacity Data Science Nanodegree : Identify Customer Segments"
-date:   2019-03-08 22:36:15
+title:  Udacity Data Science Nanodegree : Identify Customer Segments
 tags: udacity python jupyter-notebook machine-learning unsupervised-learning
 ---
 

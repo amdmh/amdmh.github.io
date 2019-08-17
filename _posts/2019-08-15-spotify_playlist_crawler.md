@@ -1,8 +1,6 @@
 ---
 layout: post
-comments: True
-title:  "Spotify Music Analysis - Part 1"
-date:   2019-08-15 10:20:15
+title:  Spotify Music Analysis - Part 1
 tags: spotify spotipy python jupyter-notebook machine-learning 
 ---
 

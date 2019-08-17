@@ -67,11 +67,15 @@ good_playlist_ids = ["5MP9Pm7rfzpCV7VilNOqVO","0pzDTD34V3iEmMXshTWi75",
                      "37i9dQZF1DWWM6GBnxtToT","37i9dQZF1DWVsh2vXzlKFb",
                      "37i9dQZF1DX2sUQwD7tbmL","37i9dQZF1DWZq91oLsHZvy"]
 ```
-
+<p>
+  
+  </p>
 
 <div style="text-align: right"> Thanks to the web API endpoints, any user can access to the Spotify catalog and user data. 
-[Here is a list of the different types of data that can be recovered.](https://developer.spotify.com/documentation/web-api/reference/) Given the purpose of the project, namely modelling, the objective here was to recover as much information as possible, even if it meant that some of it would be excluded later on. In the end, only 4 endpoints (i.e. Albums, Tracks, Artists and Playlists) out of the 50 available were used. We will discuss our approach to variable selection later on.
-</div>
+![Here is a list of the different types of data that can be recovered.](https://developer.spotify.com/documentation/web-api/reference/) Given the purpose of the project, namely modelling, the objective here was to recover as much information as possible, even if it meant that some of it would be excluded later on. In the end, only 4 endpoints (i.e. Albums, Tracks, Artists and Playlists) out of the 50 available were used. We will discuss our approach to variable selection later on.
+</div> <p>
+  
+  </p>
 
 
 ```python

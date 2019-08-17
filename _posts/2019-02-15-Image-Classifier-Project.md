@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Udacity Data Science Nanodegree : Image Classifier Project"
-tags: spotify spotipy python jupyter-notebook machine-learning 
+tags: udacity python jupyter-notebook deep-learning image-classification
 ---
 
 

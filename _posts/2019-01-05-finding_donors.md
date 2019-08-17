@@ -6,13 +6,12 @@ tags: udacity python machine-learning supervised-learning
 
 ## Getting Started
 
-<p style='text-align: justify;'> In this project, we will employ several supervised algorithms of your choice to accurately model individuals' income using data collected from the 1994 U.S. Census. You will then choose the best candidate algorithm from preliminary results and further optimize this algorithm to best model the data. Your goal with this implementation is to construct a model that accurately predicts whether an individual makes more than $50,000. This sort of task can arise in a non-profit setting, where organizations survive on donations.  Understanding an individual's income can help a non-profit better understand how large of a donation to request, or whether or not they should reach out to begin with.  While it can be difficult to determine an individual's general income bracket directly from public sources, we can (as we will see) infer this value from other publically available features. </p> 
+<p style='text-align: justify;'> In this project, we will employ several supervised algorithms of your choice to accurately model individuals' income using data collected from the 1994 U.S. Census. We will then choose the best candidate algorithm from preliminary results and further optimize this algorithm to best model the data. Your goal with this implementation is to construct a model that accurately predicts whether an individual makes more than $50,000. This sort of task can arise in a non-profit setting, where organizations survive on donations.  Understanding an individual's income can help a non-profit better understand how large of a donation to request, or whether or not they should reach out to begin with.  While it can be difficult to determine an individual's general income bracket directly from public sources, we can (as we will see) infer this value from other publically available features. </p> 
 
-<p style='text-align: justify;'> The dataset for this project originates from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Census+Income). The datset was donated by Ron Kohavi and Barry Becker, after being published in the article _"Scaling Up the Accuracy of Naive-Bayes Classifiers: A Decision-Tree Hybrid"_. You can find the article by Ron Kohavi [online](https://www.aaai.org/Papers/KDD/1996/KDD96-033.pdf). The data we investigate here consists of small changes to the original dataset, such as removing the `'fnlwgt'` feature and records with missing or ill-formatted entries. </p>
+The dataset for this project originates from the [UCI Machine Learning Repository (https://archive.ics.uci.edu/ml/datasets/Census+Income). The datset was donated by Ron Kohavi and Barry Becker, after being published in the article _"Scaling Up the Accuracy of Naive-Bayes Classifiers: A Decision-Tree Hybrid"_. You can find the article by Ron Kohavi [online](https://www.aaai.org/Papers/KDD/1996/KDD96-033.pdf). The data we investigate here consists of small changes to the original dataset, such as removing the `'fnlwgt'` feature and records with missing or ill-formatted entries.
 
 ----
 ## Exploring the Data
-Run the code cell below to load necessary Python libraries and load the census data. Note that the last column from this dataset, `'income'`, will be our target label (whether an individual makes more than, or at most, $50,000 annually). All other columns are features about each individual in the census database.
 
 
 ```python
@@ -37,11 +36,6 @@ display(data.head(n=1))
 ![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/HEAD_1.PNG)
 
 ### Implementation: Data Exploration
-A cursory investigation of the dataset will determine how many individuals fit into either group, and will tell us about the percentage of these individuals making more than \$50,000. In the code cell below, you will need to compute the following:
-- The total number of records, `'n_records'`
-- The number of individuals making more than \$50,000 annually, `'n_greater_50k'`.
-- The number of individuals making at most \$50,000 annually, `'n_at_most_50k'`.
-- The percentage of individuals making more than \$50,000 annually, `'greater_percent'`.
 
 ```python
 # TODO: Total number of records
@@ -91,13 +85,8 @@ print("Percentage of individuals making more than $50,000: {}%".format(greater_p
 
 ----
 ## Preparing the Data
-Before data can be used as input for machine learning algorithms, it often must be cleaned, formatted, and restructured — this is typically known as **preprocessing**. Fortunately, for this dataset, there are no invalid or missing entries we must deal with, however, there are some qualities about certain features that must be adjusted. This preprocessing can help tremendously with the outcome and predictive power of nearly all learning algorithms.
 
 ### Transforming Skewed Continuous Features
-A dataset may sometimes contain at least one feature whose values tend to lie near a single number, but will also have a non-trivial number of vastly larger or smaller values than that single number.  Algorithms can be sensitive to such distributions of values and can underperform if the range is not properly normalized. With the census dataset two features fit this description: '`capital-gain'` and `'capital-loss'`. 
-
-Run the code cell below to plot a histogram of these two features. Note the range of the values present and how they are distributed.
-
 
 ```python
 # Split the data into features and target label
@@ -114,7 +103,6 @@ vs.distribution(data)
 
 For highly-skewed feature distributions such as `'capital-gain'` and `'capital-loss'`, it is common practice to apply a <a href="https://en.wikipedia.org/wiki/Data_transformation_(statistics)">logarithmic transformation</a> on the data so that the very large and very small values do not negatively affect the performance of a learning algorithm. Using a logarithmic transformation significantly reduces the range of values caused by outliers. Care must be taken when applying this transformation however: The logarithm of `0` is undefined, so we must translate the values by a small amount above `0` to apply the the logarithm successfully.
 
-Run the code cell below to perform a transformation on the data and visualize the results. Again, note the range of values and how they are distributed. 
 
 
 ```python
@@ -132,9 +120,6 @@ vs.distribution(features_log_transformed, transformed = True)
 
 
 ### Normalizing Numerical Features
-In addition to performing transformations on features that are highly skewed, it is often good practice to perform some type of scaling on numerical features. Applying a scaling to the data does not change the shape of each feature's distribution (such as `'capital-gain'` or `'capital-loss'` above); however, normalization ensures that each feature is treated equally when applying supervised learners. Note that once scaling is applied, observing the data in its raw form will no longer have the same original meaning, as exampled below.
-
-Run the code cell below to normalize each numerical feature. We will use [`sklearn.preprocessing.MinMaxScaler`](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) for this.
 
 
 ```python
@@ -163,11 +148,6 @@ From the table in **Exploring the Data** above, we can see there are several fea
 | 1 |  C  | ----> one-hot encode ----> | 0 | 0 | 1 |
 | 2 |  A  |  | 1 | 0 | 0 |
 
-Additionally, as with the non-numeric features, we need to convert the non-numeric target label, `'income'` to numerical values for the learning algorithm to work. Since there are only two possible categories for this label ("<=50K" and ">50K"), we can avoid using one-hot encoding and simply encode these two categories as `0` and `1`, respectively. In code cell below, you will need to implement the following:
- - Use [`pandas.get_dummies()`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html?highlight=get_dummies#pandas.get_dummies) to perform one-hot encoding on the `'features_log_minmax_transform'` data.
- - Convert the target label `'income_raw'` to numerical entries.
-   - Set records with "<=50K" to `0` and records with ">50K" to `1`.
-
 
 ```python
 # TODO: One-hot encode the 'features_log_minmax_transform' data using pandas.get_dummies()
@@ -188,9 +168,6 @@ print("{} total features after one-hot encoding.".format(len(encoded)))
     
 
 ### Shuffle and Split Data
-Now all _categorical variables_ have been converted into numerical features, and all numerical features have been normalized. As always, we will now split the data (both features and their labels) into training and test sets. 80% of the data will be used for training and 20% for testing.
-
-Run the code cell below to perform this split.
 
 
 ```python
@@ -247,12 +224,6 @@ It is a ratio of true positives(words classified as spam, and which are actually
 For classification problems that are skewed in their classification distributions like in our case, for example if we had a 100 text messages and only 2 were spam and the rest 98 weren't, accuracy by itself is not a very good metric. We could classify 90 messages as not spam(including the 2 that were spam but we classify them as not spam, hence they would be false negatives) and 10 as spam(all 10 false positives) and still get a reasonably good accuracy score. For such cases, precision and recall come in very handy. These two metrics can be combined to get the F1 score, which is weighted average(harmonic mean) of the precision and recall scores. This score can range from 0 to 1, with 1 being the best possible F1 score(we take the harmonic mean as we are dealing with ratios).
 
 ### Question 1 - Naive Predictor Performace
-* If we chose a model that always predicted an individual made more than $50,000, what would  that model's accuracy and F-score be on this dataset? You must use the code cell below and assign your results to `'accuracy'` and `'fscore'` to be used later.
-
-** Please note ** that the the purpose of generating a naive predictor is simply to show what a base model without any intelligence would look like. In the real world, ideally your base model would be either the results of a previous model or could be based on a research paper upon which you are looking to improve. When there is no benchmark model set, getting a result better than random choice is a place you could start from.
-
-* When we have a model that always predicts '1' (i.e. the individual makes more than 50k) then our model will have no True Negatives(TN) or False Negatives(FN) as we are not making any negative('0' value) predictions. Therefore our Accuracy in this case becomes the same as our Precision(True Positives/(True Positives + False Positives)) as every prediction that we have made with value '1' that should have '0' becomes a False Positive; therefore our denominator in this case is the total number of records we have in total. 
-* Our Recall score(True Positives/(True Positives + False Negatives)) in this setting becomes 1 as we have no False Negatives.
 
 
 ```python
@@ -279,14 +250,6 @@ print("Naive Predictor: [Accuracy score: {:.4f}, F-score: {:.4f}]".format(accura
     
 
 ###  Supervised Learning Models
-**The following are some of the supervised learning models that are currently available in** [`scikit-learn`](http://scikit-learn.org/stable/supervised_learning.html) **that you may choose from:**
-- Gaussian Naive Bayes (GaussianNB)
-- Decision Trees
-- Ensemble Methods (Bagging, AdaBoost, Random Forest, Gradient Boosting)
-- K-Nearest Neighbors (KNeighbors)
-- Stochastic Gradient Descent Classifier (SGDC)
-- Support Vector Machines (SVM)
-- Logistic Regression
 
 ### Question 2 - Model Application
 List three of the supervised learning models above that are appropriate for this problem that you will test on the census data. For each model chosen
@@ -387,29 +350,7 @@ Even if it wasn't my first choice, I think logistic regression, which is conside
 
 Ensemble methods and Gradient boosted machines (GBMs) in particular are an extremely popular machine learning algorithm that have proven successful across many domains and is one of the leading methods for winning Kaggle competitions. Note that we have an heterogeneous dataset so GBM is completely suitable. 
 
-**References**
-
-- https://www.analyticsinsight.net/introduction-to-logistic-regression/ 
-- http://wiki.fast.ai/index.php/Logistic_Regression
-- https://elitedatascience.com/machine-learning-algorithms
-- https://www.datascience.com/resources/notebooks/random-forest-intro
-- https://en.wikipedia.org/wiki/Gradient_boosting
-- https://en.wikipedia.org/wiki/Learning_to_rank
-- http://uc-r.github.io/gbm_regression
-- https://medium.com/@aravanshad/gradient-boosting-versus-random-forest-cfa3fa8f0d80
-- https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosting 
-
-
 ### Implementation - Creating a Training and Predicting Pipeline
-To properly evaluate the performance of each model you've chosen, it's important that you create a training and predicting pipeline that allows you to quickly and effectively train models using various sizes of training data and perform predictions on the testing data. Your implementation here will be used in the following section.
-In the code block below, you will need to implement the following:
- - Import `fbeta_score` and `accuracy_score` from [`sklearn.metrics`](http://scikit-learn.org/stable/modules/classes.html#sklearn-metrics-metrics).
- - Fit the learner to the sampled training data and record the training time.
- - Perform predictions on the test data `X_test`, and also on the first 300 training points `X_train[:300]`.
-   - Record the total prediction time.
- - Calculate the accuracy score for both the training subset and testing set.
- - Calculate the F-score for both the training subset and testing set.
-   - Make sure that you set the `beta` parameter!
 
 
 ```python
@@ -468,15 +409,6 @@ def train_predict(learner, sample_size, X_train, y_train, X_test, y_test):
 ```
 
 ### Implementation: Initial Model Evaluation
-In the code cell, you will need to implement the following:
-- Import the three supervised learning models you've discussed in the previous section.
-- Initialize the three models and store them in `'clf_A'`, `'clf_B'`, and `'clf_C'`.
-  - Use a `'random_state'` for each model you use, if provided.
-  - **Note:** Use the default settings for each model — you will tune one specific model in a later section.
-- Calculate the number of records equal to 1%, 10%, and 100% of the training data.
-  - Store those values in `'samples_1'`, `'samples_10'`, and `'samples_100'` respectively.
-
-**Note:** Depending on which algorithms you chose, the following implementation may take some time to run!
 
 
 ```python
@@ -744,11 +676,8 @@ for i in results.items():
 
 ----
 ## Improving Results
-In this final section, you will choose from the three supervised learning models the *best* model to use on the student data. You will then perform a grid search optimization for the model over the entire training set (`X_train` and `y_train`) by tuning at least one parameter to improve upon the untuned model's F-score. 
 
 ### Question 3 - Choosing the Best Model
-
-* Based on the evaluation you performed earlier, in one to two paragraphs, explain to *CharityML* which of the three models you believe to be most appropriate for the task of identifying individuals that make more than \$50,000. 
 
 In my opinion, the best performing and appropriate model (taking into account our case wich is identifying individudals who earn more than $50,000) is the **Gradient Boosting Classifier**. By looking at the results (plots and tables), here is what we can notice : 
 
@@ -761,8 +690,6 @@ In my opinion, the best performing and appropriate model (taking into account ou
 Finally, I would conclude by saying that, when weighing the pros and cons with regard to all attributes, I'm sticking to my first choice because Gradient Boosting gives fairly good results (in particular regarding the F-score resulting in good performance in terms of Recall and Precision) and, with regards of numbers of records, 13 is an acceptable execution time.
 
 ### Question 4 - Describing the Model in Layman's Terms
-
-* In one to two paragraphs, explain to *CharityML*, in layman's terms, how the final model chosen is supposed to work. Be sure that you are describing the major qualities of the model, such as how the model is trained and how the model makes a prediction. Avoid using advanced mathematical jargon, such as describing equations.
 
 **To describe and explain Gradient Boosting Classifier in detail, we must first understand the principle of a decision tree model**
 
@@ -790,18 +717,6 @@ The process starts with a random guess of answers. Then it calculates error = Ac
 
 
 ### Implementation: Model Tuning
-Fine tune the chosen model. Use grid search (`GridSearchCV`) with at least one important parameter tuned with at least 3 different values. You will need to use the entire training set for this. In the code cell below, you will need to implement the following:
-- Import [`sklearn.grid_search.GridSearchCV`](http://scikit-learn.org/0.17/modules/generated/sklearn.grid_search.GridSearchCV.html) and [`sklearn.metrics.make_scorer`](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html).
-- Initialize the classifier you've chosen and store it in `clf`.
- - Set a `random_state` if one is available to the same state you set before.
-- Create a dictionary of parameters you wish to tune for the chosen model.
- - Example: `parameters = {'parameter' : [list of values]}`.
- - **Note:** Avoid tuning the `max_features` parameter of your learner if that parameter is available!
-- Use `make_scorer` to create an `fbeta_score` scoring object (with $\beta = 0.5$).
-- Perform grid search on the classifier `clf` using the `'scorer'`, and store it in `grid_obj`.
-- Fit the grid search object to the training data (`X_train`, `y_train`), and store it in `grid_fit`.
-
-**Note:** Depending on the algorithm chosen and the parameter list, the following implementation may take some time to run!
 
 
 ```python
@@ -902,11 +817,8 @@ print("Area under ROC curve = {:0.2f}".format(roc_auc_gb))
 ----
 ## Feature Importance
 
-An important task when performing supervised learning on a dataset like the census data we study here is determining which features provide the most predictive power. By focusing on the relationship between only a few crucial features and the target label we simplify our understanding of the phenomenon, which is most always a useful thing to do. In the case of this project, that means we wish to identify a small number of features that most strongly predict whether an individual makes at most or more than \$50,000.
-
-Choose a scikit-learn classifier (e.g., adaboost, random forests) that has a `feature_importance_` attribute, which is a function that ranks the importance of features according to the chosen classifier.  In the next python cell fit this classifier to training set and use this attribute to determine the top 5 most important features for the census dataset.
-
 ### Question 6 - Feature Relevance Observation
+
 When **Exploring the Data**, it was shown there are thirteen available features for each individual on record in the census data. Of these thirteen records, which five features do you believe to be most important for prediction, and in what order would you rank them and why?
 
 <p style='text-align: justify;'> At first glance, I would say that the five most important features for prediction are : 
@@ -918,13 +830,6 @@ When **Exploring the Data**, it was shown there are thirteen available features 
 5. **race** : dozens of socio-economic studies have proven the influence of race on the economic situation and in particular on its income </p>
 
 ### Implementation - Extracting Feature Importance
-Choose a `scikit-learn` supervised learning algorithm that has a `feature_importance_` attribute availble for it. This attribute is a function that ranks the importance of each feature when making predictions based on the chosen algorithm.
-
-In the code cell below, you will need to implement the following:
- - Import a supervised learning model from sklearn if it is different from the three used earlier.
- - Train the supervised model on the entire training set.
- - Extract the feature importances using `'.feature_importances_'`.
-
 
 ```python
 # TODO: Import a supervised learning model that has 'feature_importances_'
@@ -948,7 +853,6 @@ vs.feature_plot(importances, X_train, y_train)
 
 ### Question 7 - Extracting Feature Importance
 
-Observe the visualization created above which displays the five most relevant features for predicting if an individual makes at most or above \$50,000.  
 * How do these five features compare to the five features you discussed in **Question 6**?
 * If you were close to the same answer, how does this visualization confirm your thoughts? 
 * If you were not close, why do you think these features are more relevant?
@@ -958,7 +862,6 @@ Observe the visualization created above which displays the five most relevant fe
 - Another point is that I was not expecting capital loss plays such an important role but, after some thinking, it does make sense since capital loss is just the other side of the coin of capital gain. That's why losses and gains can clarify an individual's overall financial situation and therefore his or her salary. Same thing for hours-per-week even if common sense would suggest that people who work more every week are more likely to earn more money. 
 
 ### Feature Selection
-How does a model perform if we only use a subset of all the available features in the data? With less features required to train, the expectation is that training and prediction time is much lower — at the cost of performance metrics. From the visualization above, we see that the top five most important features contribute more than half of the importance of **all** features present in the data. This hints that we can attempt to *reduce the feature space* and simplify the information required for the model to learn. The code cell below will use the same optimized model you found earlier, and train it on the same training set *with only the top five important features*. 
 
 
 ```python
@@ -997,8 +900,6 @@ print("F-score on testing data: {:.4f}".format(fbeta_score(y_test, reduced_predi
 
 ### Question 8 - Effects of Feature Selection
 
-* How does the final model's F-score and accuracy score on the reduced data using only five features compare to those same scores when all features are used?
-* If training time was a factor, would you consider using the reduced data as your training set?
 
 - As expected, applying the model to a reduced dataset produces in a small decrease of accuracy (0.6997 instead of 0.7545) and f-score (0.8427 instead of 0.8718). 
 

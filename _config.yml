@@ -19,7 +19,7 @@ paginate:         2
 google_analytics: 'UA-145826162-1'
 emailme:          mailto:maha.ahmed@protonmail.com
 
-gems:             [jekyll-paginate, jekyll-seo-tag, jekyll-sitemap]
+plugins:             [jekyll-paginate, jekyll-seo-tag, jekyll-sitemap]
 
 github:
   repo:           https://github.com/amdmh/amdmh.github.io/

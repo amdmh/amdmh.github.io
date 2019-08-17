@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Spotify Music Analysis - Part 2
-tags: spotify spotipy python jupyter-notebook machine-learning
+tags: API spotify spotipy python data-mining
 ---
 
 After a first post on data acquisition via the Spotify API, let's move on to the crucial step of each data science project: data processing and cleaning

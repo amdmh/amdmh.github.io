@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "Udacity Data Science Nanodegree : Identify Customer Segments"
-tags: udacity python jupyter-notebook machine-learning unsupervised-learning
+title:  "Udacity Data Science Nanodegree : Identify Customer Segments"
+tags: spotify spotipy python jupyter-notebook machine-learning 
 ---
+
 
 ## Getting Started
 

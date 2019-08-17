@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Spotify Music Analysis - Part 1
-tags: spotify spotipy python jupyter-notebook machine-learning 
+tags: API spotify spotipy python data-mining
 ---
 
 

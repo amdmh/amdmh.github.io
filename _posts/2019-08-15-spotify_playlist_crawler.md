@@ -37,108 +37,30 @@ sp.trace=False
 Separate playlists containing songs that I like and others that I don't like (as diversified as possible) have been created upstream to recover enough data taking into account the limitations of the API (the limit of songs recovered in each playlist is 100). From there, we need to retrieve as much information as possible, namely data related to the song, the artist or the album, so that we can identify the attributes that best characterize my musical tastes.
 
 
-```python
-bad_playlist_ids = ["37i9dQZF1DXaiEFNvQPZrM","37i9dQZF1DXb7WmotStdsj",
-                    "37i9dQZF1DWTUfv2yzHEe7","37i9dQZF1DXcSPhLAnCjoM",
-                    "37i9dQZF1DXdF699XuZIvg","37i9dQZF1DX14fiWYoe7Oh",
-                    "37i9dQZF1DWVuV87wUBNwc","37i9dQZF1DX32nf7PAbnUl",
-                    "2tSrDVaFN05VmQtWt4RS2U","37i9dQZF1DXd0Y4aXXQXWv",
-                    "37i9dQZF1DWWl7MndYYxge","37i9dQZF1DWVAWlq3l00p0",
-                    "37i9dQZF1DX0BcQWzuB7ZO","37i9dQZF1DX6J5NfMJS675",
-                    "37i9dQZF1DXaXB8fQg7xif","37i9dQZF1DXc3KygMa1OE7",
-                    "37i9dQZF1DX1X7WV84927n","37i9dQZF1DX7LGssahBoms",
-                    "37i9dQZF1DX82pCGH5USnM","37i9dQZF1DX9GEHeZm41j4",
-                    "37i9dQZF1DXc7KgLAqOCoC","37i9dQZF1DX5Q27plkaOQ3",
-                    "37i9dQZF1DWWOaP4H0w5b0","37i9dQZF1DXe6bgV3TmZOL",
-                    "1gcxl3Byd85WxwvIx2dBGO","6xnfRIFfuYOfWqJivjUPNz"]
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/spotify/spotify_crawler_1.PNG)
 
-
-good_playlist_ids = ["5MP9Pm7rfzpCV7VilNOqVO","0pzDTD34V3iEmMXshTWi75",
-                     "1Wl63oltvnbXSMhQg2Afgb","4yuDi9FA9ApDkIILZYkPYL",
-                     "5Q8Njo6JpRFMl340AAd5OD","5F9pa8Dr5uK9N8itsmLa1f",
-                     "25lSdov27cHfJLkd9GwZZ0","37i9dQZF1DXawlg2SZawZf",
-                     "37i9dQZF1DX186v583rmzp","37i9dQZF1DX7Mq3mO5SSDc",
-                     "37i9dQZF1DX4AyFl3yqHeK","37i9dQZF1DXbITWG1ZJKYt",
-                     "37i9dQZF1DX1S1NduGwpsa","0SE5dQTI6BRvtCbsxgKOmh",
-                     "3uJ6lLXLypKkM61Rl8vJKu","3svGXFgifoYT9jEjkKindx",
-                     "37i9dQZF1DWWrHouBoNlTS","37i9dQZF1DX6K3W8KBiALe",
-                     "37i9dQZF1DXah8e1pvF5oE","37i9dQZF1DX9G9wwzwWL2k",
-                     "37i9dQZF1DWUoqEG4WY6ce","37i9dQZF1DX2Nc3B70tvx0",
-                     "37i9dQZF1DWWM6GBnxtToT","37i9dQZF1DWVsh2vXzlKFb",
-                     "37i9dQZF1DX2sUQwD7tbmL","37i9dQZF1DWZq91oLsHZvy"]
-```
 <p>
   
   </p>
 
 Thanks to the web API endpoints, any user can access to the Spotify catalog and user data. 
 [Here is a list of the different types of data that can be recovered.](https://developer.spotify.com/documentation/web-api/reference/) Given the purpose of the project, namely modelling, the objective here was to recover as much information as possible, even if it meant that some of it would be excluded later on. In the end, only 4 endpoints (i.e. Albums, Tracks, Artists and Playlists) out of the 50 available were used. We will discuss our approach to variable selection later on.
+
 <p>
   
   </p>
 
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/spotify/spotify_crawler_2.PNG)
 
-```python
-def get_data_from_one_playlist(playlistid):
-    
-    playlist = sp.user_playlist("msleonies", playlistid)
+<p>
+  
+  </p>
 
-    songs = playlist["tracks"]["items"] 
-    track_features = []
-    for i in range(len(songs)):
-        track_id = songs[i]["track"]["id"]
-        track_name = songs[i]["track"]["name"]
-        track_date = songs[i]["track"]["album"]["release_date"]
-        track_popularity = songs[i]["track"]["popularity"]
-        track_preview = songs[i]["track"]["preview_url"]
-        track_correctness = songs[i]["track"]["explicit"]
-        artist_id = songs[i]["track"]["artists"][0]["id"]
-        allid = (track_id, track_name, track_date, 
-                      track_popularity, track_preview, track_correctness, 
-                      artist_id)
-        track_features.append(allid)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/spotify/spotify_crawler_3.PNG)
 
-    track_features_df = pd.DataFrame(sp.audio_features([item[0] for item in track_features]))
-    track_features_df = track_features_df.add_prefix('track_')
-    track_name_df = pd.Series([item[1] for item in track_features]).to_frame(name='track_name')
-    track_date_df = pd.Series([item[2] for item in track_features]).to_frame(name='track_date')
-    track_popularity_df = pd.Series([item[3] for item in track_features]).to_frame(name='track_popularity')
-    track_preview_df = pd.Series([item[4] for item in track_features]).to_frame(name='track_preview')
-    track_correctness_df = pd.Series([item[5] for item in track_features]).to_frame(name='track_correctness')
-    
-    artist_df = pd.DataFrame([sp.artist(item) for item in [row[-1] for row in track_features]])
-    artist_df = artist_df.add_prefix('artist_')
-    
-    playlistdataframe = pd.concat((track_features_df,track_name_df,
-                                   track_date_df,track_popularity_df,
-                                   track_preview_df,
-                                   track_correctness_df,
-                                   artist_df),axis=1)
-
-    return playlistdataframe
-```
-
-
-```python
-#After a first try, we integrate our function created above and 
-#then loop through a list of playlists 
-def get_data_from_list_of_playlists(playlist_ids):
-    songs_dataframe = []
-    total_tracks = 0
-    for idx,playlist_id in enumerate(playlist_ids):
-        playlist_data = get_data_from_one_playlist(playlist_id)
-        total_tracks += len(playlist_data)
-        songs_dataframe.append(playlist_data)
-        print("For playlist" + ' ' + str(idx+1),"/",str(len(playlist_ids)) + ' ' + ":" 
-              + ' ' + "we have" + ' ', str(len(playlist_data)) + ' ',"songs")
-        print("Number of tracks remaining before the break : ", total_tracks)
-        if total_tracks > 200:
-            print("It's time to take a little nap")
-            time.sleep(30)
-            total_tracks = 0
-        print("* * * ----------------------------------------------------- * * *")
-    return pd.concat(songs_dataframe,axis=0)
-```
+<p>
+  
+  </p>
 
 
 ```python

@@ -6,9 +6,9 @@ tags: udacity python machine-learning supervised-learning
 
 ## Getting Started
 
-<p style='text-align: justify;'> In this project, we will employ several supervised algorithms of your choice to accurately model individuals' income using data collected from the 1994 U.S. Census. We will then choose the best candidate algorithm from preliminary results and further optimize this algorithm to best model the data. Your goal with this implementation is to construct a model that accurately predicts whether an individual makes more than $50,000. This sort of task can arise in a non-profit setting, where organizations survive on donations.  Understanding an individual's income can help a non-profit better understand how large of a donation to request, or whether or not they should reach out to begin with.  While it can be difficult to determine an individual's general income bracket directly from public sources, we can (as we will see) infer this value from other publically available features. </p> 
+In this project, we will employ several supervised algorithms of your choice to accurately model individuals' income using data collected from the 1994 U.S. Census. We will then choose the best candidate algorithm from preliminary results and further optimize this algorithm to best model the data. Your goal with this implementation is to construct a model that accurately predicts whether an individual makes more than $50,000. This sort of task can arise in a non-profit setting, where organizations survive on donations.  Understanding an individual's income can help a non-profit better understand how large of a donation to request, or whether or not they should reach out to begin with.  While it can be difficult to determine an individual's general income bracket directly from public sources, we can (as we will see) infer this value from other publically available features.
 
-The dataset for this project originates from the [UCI Machine Learning Repository (https://archive.ics.uci.edu/ml/datasets/Census+Income). The datset was donated by Ron Kohavi and Barry Becker, after being published in the article _"Scaling Up the Accuracy of Naive-Bayes Classifiers: A Decision-Tree Hybrid"_. You can find the article by Ron Kohavi [online](https://www.aaai.org/Papers/KDD/1996/KDD96-033.pdf). The data we investigate here consists of small changes to the original dataset, such as removing the `'fnlwgt'` feature and records with missing or ill-formatted entries.
+The dataset for this project originates from the [UCI Machine Learning Repository] (https://archive.ics.uci.edu/ml/datasets/Census+Income). The datset was donated by Ron Kohavi and Barry Becker, after being published in the article _"Scaling Up the Accuracy of Naive-Bayes Classifiers: A Decision-Tree Hybrid"_. You can find the article by Ron Kohavi [online](https://www.aaai.org/Papers/KDD/1996/KDD96-033.pdf). The data we investigate here consists of small changes to the original dataset, such as removing the `'fnlwgt'` feature and records with missing or ill-formatted entries.
 
 ----
 ## Exploring the Data
@@ -693,27 +693,29 @@ Finally, I would conclude by saying that, when weighing the pros and cons with r
 
 **To describe and explain Gradient Boosting Classifier in detail, we must first understand the principle of a decision tree model**
 
-<p style='text-align: justify;'> A tree model is like the Twenty Questions guessing game. The guesser might have questions like «Is it bigger than a bread box?», «Is it alive?», etc. The size or lifeness of the thing being guessed at is a feature. By winnowing down what is likely or unlikely based on these questions, you end up with a likely (but possibly wrong) answer. Part of the strategy in 20 questions is to order the questions correctly : the first few questions should be broad, so as to eliminate large number of possibilities. The last few questions should be more specific to hone in on the «best» possible answer. 
+A tree model is like the Twenty Questions guessing game. The guesser might have questions like «Is it bigger than a bread box?», «Is it alive?», etc. The size or lifeness of the thing being guessed at is a feature. By winnowing down what is likely or unlikely based on these questions, you end up with a likely (but possibly wrong) answer. Part of the strategy in 20 questions is to order the questions correctly : the first few questions should be broad, so as to eliminate large number of possibilities. The last few questions should be more specific to hone in on the «best» possible answer. 
 
-Now, what happens when a Tree ML is trained on the data set, the algorithm tries to come up with a set of «questions» that are «optimal». Unfortunately, there is no perfect solution. So, there are different strategies to try to build the Tree Model. GBC is one of the tree models. </p> 
+Now, what happens when a Tree ML is trained on the data set, the algorithm tries to come up with a set of «questions» that are «optimal». Unfortunately, there is no perfect solution. So, there are different strategies to try to build the Tree Model. GBC is one of the tree models.
+
+
 
 **Explanation of GBC**
 
-<p style='text-align: justify;'> Gradient boosting is a type of machine learning boosting. It relies on the intuition that the best possible next model, when combined with previous models, **minimizes the overall prediction error**. The key idea is to **set the target outcomes for this next model in order to minimize the error**. How are the targets calculated? The target outcome for each case in the data depends on how much changing that case’s prediction impacts the overall prediction error:
+Gradient boosting is a type of machine learning boosting. It relies on the intuition that the best possible next model, when combined with previous models, **minimizes the overall prediction error**. The key idea is to **set the target outcomes for this next model in order to minimize the error**. How are the targets calculated? The target outcome for each case in the data depends on how much changing that case’s prediction impacts the overall prediction error:
 
 - If a small change in the prediction for a case causes a large drop in error, then next target outcome of the case is a high value. Predictions from the new model that are close to its targets will reduce the error
 - If a small change in the prediction for a case causes no change in error, then next target outcome of the case is zero. Changing this prediction does not decrease the error.
 
-The name gradient boosting arises because target outcomes for each case are set based on the gradient of the error with respect to the prediction. Each new model takes a step in the direction that minimizes prediction error, in the space of possible predictions for each training case. </p> 
+The name gradient boosting arises because target outcomes for each case are set based on the gradient of the error with respect to the prediction. Each new model takes a step in the direction that minimizes prediction error, in the space of possible predictions for each training case.
 
 
 **Illustration for GBC**
 
 > Imagine 20 teams (trees). A boss at the top, then subordinates, then more subordinates, and so on. Team members are explanatory variables. Assume, Trees = 20 and Depth (number of members in each team) = 5. 
 
-<p style='text-align: justify;'> So each team will have 5 members, and total members = 100. We give them a book to read, and then they will have to answer 20 questions (Number of observations in our data). Assume they have binary answers: Yes or No (in our case, less than 50k or greater). Now, we start the process. The aim of the process is to maximum correct answers by building 20 teams having 5 members each. Any member can be a part of more than 1 team, and any member can have more than 1 more than 1 role in same team. The member which have maximum roles is the most important variable of our model.
+So each team will have 5 members, and total members = 100. We give them a book to read, and then they will have to answer 20 questions (Number of observations in our data). Assume they have binary answers: Yes or No (in our case, less than 50k or greater). Now, we start the process. The aim of the process is to maximum correct answers by building 20 teams having 5 members each. Any member can be a part of more than 1 team, and any member can have more than 1 more than 1 role in same team. The member which have maximum roles is the most important variable of our model.
 
-The process starts with a random guess of answers. Then it calculates error = Actual - Predicted Answer. Next step, it build a team of 5 members, which reduces the error by maximum. Again, it calculates the error. The second team (tree) has to reduce it further. But next team doesn't trust its previous partner fully, so it assume that answers are correct with x probability (learning rate). This process go on till 20 teams are build. So in the process, we have to decide, how many teams to build (trees), members in each team(depth) and learning team, so that error in the end is minimum. This can only be done by trial and error method. </p> 
+The process starts with a random guess of answers. Then it calculates error = Actual - Predicted Answer. Next step, it build a team of 5 members, which reduces the error by maximum. Again, it calculates the error. The second team (tree) has to reduce it further. But next team doesn't trust its previous partner fully, so it assume that answers are correct with x probability (learning rate). This process go on till 20 teams are build. So in the process, we have to decide, how many teams to build (trees), members in each team(depth) and learning team, so that error in the end is minimum. This can only be done by trial and error method.
 
 
 ### Implementation: Model Tuning
@@ -821,13 +823,13 @@ print("Area under ROC curve = {:0.2f}".format(roc_auc_gb))
 
 When **Exploring the Data**, it was shown there are thirteen available features for each individual on record in the census data. Of these thirteen records, which five features do you believe to be most important for prediction, and in what order would you rank them and why?
 
-<p style='text-align: justify;'> At first glance, I would say that the five most important features for prediction are : 
+At first glance, I would say that the five most important features for prediction are : 
 
 1. **capital gain** : the more an individual's capital increases, the more his/her ability to invest (or give money) increases 
 2. **education** : according to several economic and sociological studies, the most highly educated people have on average a higher salary
 3. **age** : in general, a person tends to gain experience over the years. As a result, older people are more likely to have salary increases (bonuses, promotions to positions with more responsibility, etc.)
 4. **occupation** : the sector of activity and the hierarchical position in the company can have an influence on an individual's salary and therefore on his ability to give money
-5. **race** : dozens of socio-economic studies have proven the influence of race on the economic situation and in particular on its income </p>
+5. **race** : dozens of socio-economic studies have proven the influence of race on the economic situation and in particular on its income
 
 ### Implementation - Extracting Feature Importance
 

@@ -1,12 +1,14 @@
 ---
 layout: post
+title:  Spotify Music Analysis - Part 2
 comments: true
-title:  "Spotify Music Analysis - Part 2"
-date:   2019-08-15 12:20:15
+description: After a first post on data acquisition via the Spotify API, let's move on to the crucial step of each data science project: data processing and cleaning
 tags: spotify spotipy python jupyter-notebook machine-learning
 ---
 
-After a first post on data acquisition via the Spotify API, let's move on to the crucial step of each data science project: data processing and cleaning
+<style>
+.highlight-left {margin-left: 0}
+</style>
 
 # Cleaning the data collected from the Spotify Web API using Spotipy
 

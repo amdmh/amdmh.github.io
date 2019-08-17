@@ -13,11 +13,8 @@ layout: default
     ]
   </span></p>
   <p><span class="post-date">{{ page.date | date_to_string }}</span></p>
-  </pre>
-    
-{% include reading-time.html %}
-
-  </pre>
+  <p>{% include reading-time.html %}</p>
+  
   {{ content }}
 </div>
 

@@ -6,12 +6,12 @@ tags: udacity python machine-learning supervised-learning
 
 ## Getting Started
 
-In this project, we will employ several supervised algorithms of your choice to accurately model individuals' income using data collected from the 1994 U.S. Census. We will then choose the best candidate algorithm from preliminary results and further optimize this algorithm to best model the data. Your goal with this implementation is to construct a model that accurately predicts whether an individual makes more than $50,000. This sort of task can arise in a non-profit setting, where organizations survive on donations.  Understanding an individual's income can help a non-profit better understand how large of a donation to request, or whether or not they should reach out to begin with.  While it can be difficult to determine an individual's general income bracket directly from public sources, we can (as we will see) infer this value from other publically available features.
+In this project, we will employ several supervised algorithms of our choice to accurately model individuals' income using data collected from the 1994 U.S. Census. We will then choose the best candidate algorithm from preliminary results and further optimize this algorithm to best model the data. Our goal with this implementation is to construct a model that accurately predicts whether an individual makes more than $50,000. This sort of task can arise in a non-profit setting, where organizations survive on donations.  Understanding an individual's income can help a non-profit better understand how large of a donation to request, or whether or not they should reach out to begin with.  While it can be difficult to determine an individual's general income bracket directly from public sources, we can (as we will see) infer this value from other publically available features.
 
 The dataset for this project originates from the [UCI Machine Learning Repository] (https://archive.ics.uci.edu/ml/datasets/Census+Income). The datset was donated by Ron Kohavi and Barry Becker, after being published in the article _"Scaling Up the Accuracy of Naive-Bayes Classifiers: A Decision-Tree Hybrid"_. You can find the article by Ron Kohavi [online](https://www.aaai.org/Papers/KDD/1996/KDD96-033.pdf). The data we investigate here consists of small changes to the original dataset, such as removing the `'fnlwgt'` feature and records with missing or ill-formatted entries.
 
 ----
-## Exploring the Data
+## 1 - Exploring the Data
 
 
 ```python
@@ -35,24 +35,9 @@ display(data.head(n=1))
 ```
 ![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/HEAD_1.PNG)
 
-### Implementation: Data Exploration
+### 1.1 - Implementation: Data Exploration
 
 ```python
-# TODO: Total number of records
-n_records = len(data)
-print(n_records)
-
-# TODO: Number of records where individual's income is more than $50,000
-n_greater_50k = len(data.loc[data['income'] == '>50K'])
-print(n_greater_50k)
-
-# TODO: Number of records where individual's income is at most $50,000
-n_at_most_50k = len(data.loc[data['income'] == '<=50K'])
-
-# TODO: Percentage of individuals whose income is more than $50,000
-greater_percent = round(((n_greater_50k / n_records) *100),2)
-
-# Print the results
 print("Total number of records: {}".format(n_records))
 print("Individuals making more than $50,000: {}".format(n_greater_50k))
 print("Individuals making at most $50,000: {}".format(n_at_most_50k))
@@ -84,9 +69,9 @@ print("Percentage of individuals making more than $50,000: {}%".format(greater_p
 * **native-country**: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary, Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands.
 
 ----
-## Preparing the Data
+## 2 - Preparing the Data
 
-### Transforming Skewed Continuous Features
+### 2.1 - Transforming Skewed Continuous Features
 
 ```python
 # Split the data into features and target label
@@ -119,7 +104,7 @@ vs.distribution(features_log_transformed, transformed = True)
 ![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/output_11_0.png)
 
 
-### Normalizing Numerical Features
+### 2.2 - Normalizing Numerical Features
 
 
 ```python
@@ -138,7 +123,7 @@ display(features_log_minmax_transform.head(n = 5))
 ```
 ![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/HEAD_2.PNG)
 
-### Implementation: Data Preprocessing
+### 2.3 - Implementation: Data Preprocessing
 
 From the table in **Exploring the Data** above, we can see there are several features for each record that are non-numeric. Typically, learning algorithms expect input to be numeric, which requires that non-numeric features (called *categorical variables*) be converted. One popular way to convert categorical variables is by using the **one-hot encoding** scheme. One-hot encoding creates a _"dummy"_ variable for each possible category of each non-numeric feature. For example, assume `someFeature` has three possible entries: `A`, `B`, or `C`. We then encode this feature into `someFeature_A`, `someFeature_B` and `someFeature_C`.
 
@@ -167,7 +152,7 @@ print("{} total features after one-hot encoding.".format(len(encoded)))
     103 total features after one-hot encoding.
     
 
-### Shuffle and Split Data
+### 2.4 - Shuffle and Split Data
 
 
 ```python
@@ -194,10 +179,10 @@ print("Testing set has {} samples.".format(X_test.shape[0]))
     
 
 ----
-## Evaluating Model Performance
-In this section, we will investigate four different algorithms, and determine which is best at modeling the data. Three of these algorithms will be supervised learners of your choice, and the fourth algorithm is known as a *naive predictor*.
+## 3 - Evaluating Model Performance
+In this section, we will investigate four different algorithms, and determine which is best at modeling the data. 
 
-### Metrics and the Naive Predictor
+### 3.1 - Metrics and the Naive Predictor
 *CharityML*, equipped with their research, knows individuals that make more than \$50,000 are most likely to donate to their charity. Because of this, *CharityML* is particularly interested in predicting who makes more than \$50,000 accurately. It would seem that using **accuracy** as a metric for evaluating a particular model's performace would be appropriate. Additionally, identifying someone that *does not* make more than \$50,000 as someone who does would be detrimental to *CharityML*, since they are looking to find individuals willing to donate. Therefore, a model's ability to precisely predict those that make more than \$50,000 is *more important* than the model's ability to **recall** those individuals. We can use **F-beta score** as a metric that considers both precision and recall:
 
 $$ F_{\beta} = (1 + \beta^2) \cdot \frac{precision \cdot recall}{\left( \beta^2 \cdot precision \right) + recall} $$
@@ -249,7 +234,7 @@ print("Naive Predictor: [Accuracy score: {:.4f}, F-score: {:.4f}]".format(accura
     Naive Predictor: [Accuracy score: 0.2478, F-score: 0.2917]
     
 
-###  Supervised Learning Models
+### Supervised Learning Models
 
 ### Question 2 - Model Application
 List three of the supervised learning models above that are appropriate for this problem that you will test on the census data. For each model chosen
@@ -350,11 +335,11 @@ Even if it wasn't my first choice, I think logistic regression, which is conside
 
 Ensemble methods and Gradient boosted machines (GBMs) in particular are an extremely popular machine learning algorithm that have proven successful across many domains and is one of the leading methods for winning Kaggle competitions. Note that we have an heterogeneous dataset so GBM is completely suitable. 
 
-### Implementation - Creating a Training and Predicting Pipeline
+### 3.2 - Implementation - Creating a Training and Predicting Pipeline
 
 
 ```python
-# TODO: Import two metrics from sklearn - fbeta_score and accuracy_score
+# Import two metrics from sklearn - fbeta_score and accuracy_score
 
 from sklearn.metrics import fbeta_score, accuracy_score
 
@@ -371,34 +356,34 @@ def train_predict(learner, sample_size, X_train, y_train, X_test, y_test):
     
     results = {}
     
-    # TODO: Fit the learner to the training data using slicing with 'sample_size' using .fit(training_features[:], training_labels[:])
+    # Fit the learner to the training data using slicing with 'sample_size' using .fit(training_features[:], training_labels[:])
     start = time() # Get start time
     learner = learner.fit(X_train[:sample_size],y_train[:sample_size])
     end = time() # Get end time
     
-    # TODO: Calculate the training time
+    # Calculate the training time
     results['train_time'] = end-start
         
-    # TODO: Get the predictions on the test set(X_test),
+    #       Get the predictions on the test set(X_test),
     #       then get predictions on the first 300 training samples(X_train) using .predict()
     start = time() # Get start time
     predictions_test = learner.predict(X_test)
     predictions_train = learner.predict(X_train[:300])
     end = time() # Get end time
     
-    # TODO: Calculate the total prediction time
+    # Calculate the total prediction time
     results['pred_time'] = end - start
             
-    # TODO: Compute accuracy on the first 300 training samples which is y_train[:300]
+    # Compute accuracy on the first 300 training samples which is y_train[:300]
     results['acc_train'] = accuracy_score(y_train[:300],predictions_train)
         
-    # TODO: Compute accuracy on test set using accuracy_score()
+    # Compute accuracy on test set using accuracy_score()
     results['acc_test'] = accuracy_score(y_test,predictions_test)
     
-    # TODO: Compute F-score on the the first 300 training samples using fbeta_score()
+    # Compute F-score on the the first 300 training samples using fbeta_score()
     results['f_train'] = fbeta_score(y_train[:300],predictions_train,0.5)
         
-    # TODO: Compute F-score on the test set which is y_test
+    # Compute F-score on the test set which is y_test
     results['f_test'] = fbeta_score(y_test,predictions_test,0.5)
        
     # Success
@@ -408,24 +393,21 @@ def train_predict(learner, sample_size, X_train, y_train, X_test, y_test):
     return results
 ```
 
-### Implementation: Initial Model Evaluation
+### 3.3 - Implementation: Initial Model Evaluation
 
 
 ```python
-# TODO: Import the three supervised learning models from sklearn
+# Import the three supervised learning models from sklearn
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import GradientBoostingClassifier
 
-# TODO: Initialize the three models
+# Initialize the three models
 clf_A = RandomForestClassifier(random_state = 50)
 clf_B = LogisticRegression(random_state = 50)
 clf_C = GradientBoostingClassifier(random_state = 50)
 
-# TODO: Calculate the number of samples for 1%, 10%, and 100% of the training data
-# HINT: samples_100 is the entire training set i.e. len(y_train)
-# HINT: samples_10 is 10% of samples_100 (ensure to set the count of the values to be `int` and not `float`)
-# HINT: samples_1 is 1% of samples_100 (ensure to set the count of the values to be `int` and not `float`)
+# Calculate the number of samples for 1%, 10%, and 100% of the training data
 
 samples_100 = len(y_train)
 samples_10 = int(len(y_train)/10)
@@ -675,7 +657,7 @@ for i in results.items():
 
 
 ----
-## Improving Results
+## 4 - Improving Results
 
 ### Question 3 - Choosing the Best Model
 
@@ -718,18 +700,18 @@ So each team will have 5 members, and total members = 100. We give them a book t
 The process starts with a random guess of answers. Then it calculates error = Actual - Predicted Answer. Next step, it build a team of 5 members, which reduces the error by maximum. Again, it calculates the error. The second team (tree) has to reduce it further. But next team doesn't trust its previous partner fully, so it assume that answers are correct with x probability (learning rate). This process go on till 20 teams are build. So in the process, we have to decide, how many teams to build (trees), members in each team(depth) and learning team, so that error in the end is minimum. This can only be done by trial and error method.
 
 
-### Implementation: Model Tuning
+### 4.1 - Implementation: Model Tuning
 
 
 ```python
-# TODO: Import 'GridSearchCV', 'make_scorer', and any other necessary libraries
+# Import 'GridSearchCV', 'make_scorer', and any other necessary libraries
 from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import make_scorer, r2_score, fbeta_score
 
-# TODO: Initialize the classifier
+# Initialize the classifier
 clf = GradientBoostingClassifier(random_state=50)
 
-# TODO: Create the parameters list you wish to tune, using a dictionary if needed.
+# Create the parameters list you wish to tune, using a dictionary if needed.
 # HINT: parameters = {'parameter_1': [value1, value2], 'parameter_2': [value1, value2]}
 parameters = {
     'n_estimators':[300,400,500],
@@ -737,13 +719,13 @@ parameters = {
     'max_depth':[3],
 }
 
-# TODO: Make an fbeta_score scoring object using make_scorer()
+# Make an fbeta_score scoring object using make_scorer()
 scorer = make_scorer(fbeta_score, beta=0.5)
 
-# TODO: Perform grid search on the classifier using 'scorer' as the scoring method using GridSearchCV()
+# Perform grid search on the classifier using 'scorer' as the scoring method using GridSearchCV()
 grid_obj = GridSearchCV(clf, parameters, scorer)
 
-# TODO: Fit the grid search object to the training data and find the optimal parameters using fit()
+# Fit the grid search object to the training data and find the optimal parameters using fit()
 grid_fit = grid_obj.fit(X_train, y_train)
 
 # Get the estimator
@@ -817,7 +799,7 @@ print("Area under ROC curve = {:0.2f}".format(roc_auc_gb))
 - The results of GBC are much better than those of the Naive predictor (Accuracy increased by 0.624, F-Score by 0.4628)
 
 ----
-## Feature Importance
+## 5 - Feature Importance
 
 ### Question 6 - Feature Relevance Observation
 
@@ -831,18 +813,18 @@ At first glance, I would say that the five most important features for predictio
 4. **occupation** : the sector of activity and the hierarchical position in the company can have an influence on an individual's salary and therefore on his ability to give money
 5. **race** : dozens of socio-economic studies have proven the influence of race on the economic situation and in particular on its income
 
-### Implementation - Extracting Feature Importance
+### 5.1 - Implementation - Extracting Feature Importance
 
 ```python
-# TODO: Import a supervised learning model that has 'feature_importances_'
+# Import a supervised learning model that has 'feature_importances_'
 from sklearn.ensemble import AdaBoostClassifier
 
 model = AdaBoostClassifier(random_state=50)
 
-# TODO: Train the supervised model on the training set using .fit(X_train, y_train)
+# Train the supervised model on the training set using .fit(X_train, y_train)
 model = model.fit(X_train, y_train)
 
-# TODO: Extract the feature importances using .feature_importances_ 
+# Extract the feature importances using .feature_importances_ 
 importances = model.feature_importances_
 
 # Plot
@@ -863,7 +845,7 @@ vs.feature_plot(importances, X_train, y_train)
 
 - Another point is that I was not expecting capital loss plays such an important role but, after some thinking, it does make sense since capital loss is just the other side of the coin of capital gain. That's why losses and gains can clarify an individual's overall financial situation and therefore his or her salary. Same thing for hours-per-week even if common sense would suggest that people who work more every week are more likely to earn more money. 
 
-### Feature Selection
+### 5.2 - Feature Selection
 
 
 ```python

@@ -1069,7 +1069,7 @@ azdias_encoded.shape
 #### Step 1.2.2: Engineer Mixed-Type Features
 
 There are a handful of features that are marked as "mixed" in the feature summary that require special treatment in order to be included in the analysis. There are two in particular that deserve attention :
-- "PRAEGENDE_JUGENDJAHRE" combines information on three dimensions: generation by decade, movement (mainstream vs. avantgarde), and nation (east vs. west). While there aren't enough levels to disentangle east from west, you should create two new variables to capture the other two dimensions: an interval-type variable for decade, and a binary variable for movement.
+- "PRAEGENDE_JUGENDJAHRE" combines information on three dimensions: generation by decade, movement (mainstream vs. avantgarde), and nation (east vs. west). While there aren't enough levels to disentangle east from west, we should create two new variables to capture the other two dimensions: an interval-type variable for decade, and a binary variable for movement.
 - "CAMEO_INTL_2015" combines information on two axes: wealth and life stage. Break up the two-digit codes by their 'tens'-place and 'ones'-place digits into two new ordinal variables (which, for the purposes of this project, is equivalent to just treating them as their raw numeric values).
 
 
@@ -1242,8 +1242,7 @@ azdias_final.shape
 
 
 ```python
-# Do whatever you need to in order to ensure that the dataframe only contains
-# the columns that should be passed to the algorithm functions.
+# Ensure that the dataframe only contains the columns that should be passed to the algorithm functions
 ```
 
 **# Step 1** 
@@ -1381,10 +1380,6 @@ set(azdias_final.columns).symmetric_difference(df_cleaned.columns)
 ### Step 2.1: Apply Feature Scaling
 
 
-```python
-# If you've not yet cleaned the dataset of all NaN values, then investigate and
-# do that now.
-```
 
 
 ```python
@@ -1667,8 +1662,7 @@ plot_pca(df_scaled, pca_azdias, 0)
 ```python
 # Map weights for the first principal component to corresponding feature names
 # and then print the linked values, sorted by weight.
-# HINT: Try defining a function here or in a new cell that you can reuse in the
-# other cells.
+
 plot_pca(df_scaled, pca_azdias, 1)
 ```
 

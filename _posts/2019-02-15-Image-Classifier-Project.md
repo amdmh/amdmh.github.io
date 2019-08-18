@@ -155,7 +155,7 @@ out = torchvision.utils.make_grid(inputs[0:n_images])
 imshow(out, title=[class_names[x] for x in classes[0:n_images]])
 ```
 
-<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/output_50_1.png"  width="603" height="182">
+<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/output_13_0.png"  width="603" height="182">
 
 
 

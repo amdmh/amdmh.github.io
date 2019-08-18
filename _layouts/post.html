@@ -16,7 +16,14 @@ layout: default
   
   
   {{ content }}
+  
+  {% if site.disqus.shortname %}
+  {% include disqus_comments.html %}
+{% endif %}
+  
 </div>
+
+
 
 <div class="related">
   <h2>Related Posts</h2>

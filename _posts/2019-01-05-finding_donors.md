@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Udacity Data Science Nanodegree : Finding Donors for CharityML"
+comments : true
 tags: udacity python machine-learning supervised-learning
 ---
 

@@ -11,7 +11,8 @@ Going forward, AI algorithms will be incorporated into more and more everyday ap
 
 In this project, we will train an image classifier to recognize different species of flowers. We can imagine using something like this in a phone app that tells you the name of the flower your camera is looking at. In practice we'd train this classifier, then export it for use in our application. We'll be using [this dataset](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/index.html) of 102 flower categories, we can see a few examples below. 
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/Flowers.png)
+<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/Flowers.png"  width="701" height="364">
+
 
 
 The project is broken down into multiple steps:

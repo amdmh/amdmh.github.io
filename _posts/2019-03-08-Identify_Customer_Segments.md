@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Udacity Data Science Nanodegree : Identify Customer Segments"
+comments: true
 tags: udacity python unsupervised-learning machine-learning
 ---
 

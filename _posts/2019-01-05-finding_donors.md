@@ -123,7 +123,7 @@ features_log_minmax_transform[numerical] = scaler.fit_transform(features_log_tra
 # Show an example of a record with scaling applied
 display(features_log_minmax_transform.head(n = 5))
 ```
-<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/HEAD_2.PNG"  width="821" height="191">
+<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/HEAD_2.PNG"  width="787" height="183">
 
 ### 2.3 - Implementation: Data Preprocessing
 

@@ -256,7 +256,7 @@ plt.show();
 ```
 
 
-![png](output_23_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_23_0.png)
 
 
 
@@ -355,7 +355,7 @@ plt.show();
 ```
 
 
-![png](output_33_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_33_0.png)
 
 
 
@@ -389,7 +389,7 @@ missing_azdias_count.hist(grid=False, color = 'indianred');
 ```
 
 
-![png](output_36_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_36_0.png)
 
 
 
@@ -460,7 +460,7 @@ plt.show();
 ```
 
 
-![png](output_43_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_43_0.png)
 
 
 #### Discussion 1.1.2: Assess Missing Data in Each Column
@@ -694,7 +694,7 @@ plt.show();
 ```
 
 
-![png](output_54_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_54_0.png)
 
 
 
@@ -741,23 +741,23 @@ for col in col_names:
 ```
 
 
-![png](output_59_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_59_0.png)
 
 
 
-![png](output_59_1.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_59_1.png)
 
 
 
-![png](output_59_2.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_59_2.png)
 
 
 
-![png](output_59_3.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_59_3.png)
 
 
 
-![png](output_59_4.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_59_4.png)
 
 
 #### Discussion 1.1.3: Assess Missing Data in Each Row
@@ -1582,7 +1582,7 @@ plt.show();
     
 
 
-![png](output_136_1.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_136_1.png)
 
 
 
@@ -1655,7 +1655,7 @@ plot_pca(df_scaled, pca_azdias, 0)
 ```
 
 
-![png](output_145_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_145_0.png)
 
 
 
@@ -1667,7 +1667,7 @@ plot_pca(df_scaled, pca_azdias, 1)
 ```
 
 
-![png](output_146_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_146_0.png)
 
 
 
@@ -1678,7 +1678,7 @@ plot_pca(df_scaled, pca_azdias, 2)
 ```
 
 
-![png](output_147_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_147_0.png)
 
 
 
@@ -1689,7 +1689,7 @@ plot_pca(df_scaled, pca_azdias, 3)
 ```
 
 
-![png](output_148_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_148_0.png)
 
 
 ### Discussion 2.3: Interpret Principal Components
@@ -1839,7 +1839,7 @@ plt.show();
 ```
 
 
-![png](output_156_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_156_0.png)
 
 
 
@@ -1958,7 +1958,7 @@ plt.show();
 ```
 
 
-![png](output_170_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_170_0.png)
 
 
 ### Discussion 3.3: Compare Customer Data to Demographics Data
@@ -1983,7 +1983,7 @@ plt.bar(np.arange(20), np.mean(azdias_pca[over_represented_cluster][:,:20], axis
 
 
 
-![png](output_173_1.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_173_1.png)
 
 
 > We filter the data from the customer dataset corresponding to cluster 13 and then determine which main components are most represented (0,3,4) for the cluster. 
@@ -2009,7 +2009,7 @@ plt.bar(np.arange(20), np.mean(azdias_pca[under_represented_cluster][:,:20], axi
 
 
 
-![png](output_175_1.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/identify_customer_segments/output_175_1.png)
 
 
 > Same as above, 4 typical profiles stand out from the group :

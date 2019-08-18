@@ -52,7 +52,7 @@ html {
   font-size: 16px;
   line-height: 1.5;
 }
-@media (min-width: 38em) {
+@media (min-width: 38rem) {
   html {
     font-size: 20px;
   }
@@ -70,13 +70,23 @@ a {
   color: #268bd2;
   text-decoration: none;
 }
-a strong {
-  color: inherit;
-}
 /* `:focus` is linked to `:hover` for basic accessibility */
 a:hover,
 a:focus {
   text-decoration: underline;
+}
+.no-underline:hover{
+  text-decoration: none;
+}
+
+h1, h2, h1 a, h2 a:lang(zh) {
+  font-family: "PT Sans", "cwTeXMing", serif;
+}
+h3, h4, h5, h6, p, table, img, a, ul, li:lang(zh) {
+  font-family: "PT Sans", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+blockquote p:lang(zh){
+  font-family: "PT Sans", "STKaiti", "Kaiti", "cwTeXKai", "Microsoft YaHei", sans-serif;
 }
 
 /* Headings */
@@ -107,6 +117,14 @@ h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+}
+.full-width {
+  float: right;
+  width: 100%;
+}
+.no-margin {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 strong {
@@ -178,36 +196,12 @@ pre code {
   color: inherit;
   background-color: transparent;
 }
-
-/* Pygments via Jekyll */
 .highlight {
   margin-bottom: 1rem;
   border-radius: 4px;
 }
 .highlight pre {
   margin-bottom: 0;
-}
-
-/* Gist via GitHub Pages */
-.gist .gist-file {
-  font-family: Menlo, Monaco, "Courier New", monospace !important;
-}
-.gist .markdown-body {
-  padding: 15px;
-}
-.gist pre {
-  padding: 0;
-  background-color: transparent;
-}
-.gist .gist-file .gist-data {
-  font-size: .8rem !important;
-  line-height: 1.4;
-}
-.gist code {
-  padding: 0;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 0;
 }
 
 /* Quotes */
@@ -220,7 +214,7 @@ blockquote {
 blockquote p:last-child {
   margin-bottom: 0;
 }
-@media (min-width: 30em) {
+@media (min-width: 30rem) {
   blockquote {
     padding-right: 5rem;
     padding-left: 1.25rem;
@@ -229,10 +223,23 @@ blockquote p:last-child {
 
 img {
   display: block;
-  max-width: 100%;
   margin: 0 0 1rem;
   border-radius: 5px;
 }
+.inline {
+  display: inline;
+  margin: 0 0 0 0;
+  border-radius: 0;
+}
+
+
+img.emoji {
+  display: inline;
+  height: 1em;
+  width: 1em;
+  margin-bottom: 0.25em;
+}
+
 
 /* Tables */
 table {
@@ -331,7 +338,6 @@ tbody tr:nth-child(odd) th {
 .page,
 .post {
   margin-bottom: 4em;
-  text-align: justify;
 }
 
 /* Blog post or page title */
@@ -344,6 +350,10 @@ tbody tr:nth-child(odd) th {
 .post-title {
   margin-top: 0;
 }
+.tag-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
 
 /* Meta data line below post title */
 .post-date {
@@ -351,6 +361,12 @@ tbody tr:nth-child(odd) th {
   margin-top: 1rem;
   margin-bottom: 1rem;
   color: #9a9a9a;
+}
+/* Meta data line below post title */
+.post-tags {
+  display: block;
+  margin-top: -.5rem;
+  margin-bottom: .5rem;
 }
 
 /* Related posts */
@@ -410,7 +426,7 @@ a.pagination-item:hover {
   background-color: #f5f5f5;
 }
 
-@media (min-width: 30em) {
+@media (min-width: 30rem) {
   .pagination {
     margin: 3rem 0;
   }

@@ -11,7 +11,7 @@ Going forward, AI algorithms will be incorporated into more and more everyday ap
 
 In this project, we will train an image classifier to recognize different species of flowers. We can imagine using something like this in a phone app that tells you the name of the flower your camera is looking at. In practice we'd train this classifier, then export it for use in our application. We'll be using [this dataset](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/index.html) of 102 flower categories, we can see a few examples below. 
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/Flowers.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/Flowers.png)
 
 
 The project is broken down into multiple steps:
@@ -155,7 +155,7 @@ out = torchvision.utils.make_grid(inputs[0:n_images])
 imshow(out, title=[class_names[x] for x in classes[0:n_images]])
 ```
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/output_13_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/output_13_0.png)
 
 
 
@@ -554,7 +554,7 @@ imshow(process_image("flowers/test/15/image_06360.jpg"));
 ```
 
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/output_43_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/output_43_0.png)
 
 
 ### 9 - Class Prediction
@@ -633,7 +633,7 @@ print(classes)
 
 Now that we can use a trained model for predictions, we check to make sure it makes sense. Even if the testing accuracy is high, it's always good to check that there aren't obvious bugs.
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/inference_example.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/inference_example.png)
 
 
 ```python
@@ -674,5 +674,5 @@ plt.show()
     
 
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/output_50_1.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/output_50_1.png)
 

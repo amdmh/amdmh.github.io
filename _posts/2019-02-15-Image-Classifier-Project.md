@@ -674,6 +674,6 @@ plt.show()
     
 
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/output_50_1.png)<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/output_50_1.png"  width="711" height="423">
+<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/output_50_1.png"  width="711" height="423">
 
 

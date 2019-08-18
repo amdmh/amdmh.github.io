@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Udacity Data Science Nanodegree : Image Classifier Project"
+comments : true
 tags: udacity python deep-learning pytorch 
 ---
 

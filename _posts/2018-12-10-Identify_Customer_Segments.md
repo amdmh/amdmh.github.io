@@ -1134,79 +1134,7 @@ azdias_encoded['JUGENDJAHRE_MOVEMENT'] = azdias_encoded['PRAEGENDE_JUGENDJAHRE']
 
 ```python
 # Investigate "CAMEO_INTL_2015" and engineer two new variables
-azdias_encoded[['CAMEO_INTL_2015']].head(10)
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CAMEO_INTL_2015</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>51</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>24</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>43</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>54</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>15</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
 
 ```python

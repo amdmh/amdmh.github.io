@@ -18,8 +18,12 @@ author:
 paginate:         2
 google_analytics: 'UA-145826162-1'
 emailme:           mailto:maha.ahmed@protonmail.com
+
+# Disqus Comments
 disqus:
-  shortname:       porfolio-2
+    # Leave shortname blank to disable comments site-wide.
+    # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
+    shortname: porfolio-2
 
 plugins:             [jekyll-paginate, jekyll-seo-tag, jekyll-sitemap]
 

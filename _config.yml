@@ -18,6 +18,7 @@ author:
 paginate:         2
 google_analytics: 'UA-145826162-1'
 emailme:          mailto:maha.ahmed@protonmail.com
+disqusShortname: porfolio-2
 
 plugins:             [jekyll-paginate, jekyll-seo-tag, jekyll-sitemap]
 

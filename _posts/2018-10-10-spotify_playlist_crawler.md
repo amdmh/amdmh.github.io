@@ -1,3 +1,8 @@
+---
+layout: post
+title:  "Test"
+tags: udacity python 
+---
 
 # Collecting data from the Spotify Web API using Spotipy
 

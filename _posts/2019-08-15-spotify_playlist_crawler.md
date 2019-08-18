@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  Spotify Music Analysis - Part 1
+comments: true
 tags: API spotify spotipy python data-mining
 ---
 

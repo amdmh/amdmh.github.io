@@ -33,7 +33,8 @@ data = pd.read_csv("census.csv")
 # Success - Display the first record
 display(data.head(n=1))
 ```
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/HEAD_1.PNG)
+<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/HEAD_1.PNG"  width="673" height="59">
+
 
 ### 1.1 - Implementation: Data Exploration
 
@@ -83,7 +84,8 @@ vs.distribution(data)
 ```
 
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/output_9_0.png)
+<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/output_9_0.png"  width="706" height="337">
+
 
 
 For highly-skewed feature distributions such as `'capital-gain'` and `'capital-loss'`, it is common practice to apply a <a href="https://en.wikipedia.org/wiki/Data_transformation_(statistics)">logarithmic transformation</a> on the data so that the very large and very small values do not negatively affect the performance of a learning algorithm. Using a logarithmic transformation significantly reduces the range of values caused by outliers. Care must be taken when applying this transformation however: The logarithm of `0` is undefined, so we must translate the values by a small amount above `0` to apply the the logarithm successfully.
@@ -101,7 +103,7 @@ vs.distribution(features_log_transformed, transformed = True)
 ```
 
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/output_11_0.png)
+<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/output_11_0.png"  width="706" height="337">
 
 
 ### 2.2 - Normalizing Numerical Features
@@ -121,7 +123,7 @@ features_log_minmax_transform[numerical] = scaler.fit_transform(features_log_tra
 # Show an example of a record with scaling applied
 display(features_log_minmax_transform.head(n = 5))
 ```
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/HEAD_2.PNG)
+<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/HEAD_2.PNG"  width="673" height="59">
 
 ### 2.3 - Implementation: Data Preprocessing
 
@@ -438,7 +440,8 @@ vs.evaluate(results, accuracy, fscore)
     
 
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/output_28_1.png)
+<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/output_28_1.png"  width="706" height="502">
+
 
 
 
@@ -832,8 +835,7 @@ vs.feature_plot(importances, X_train, y_train)
 ```
 
 
-![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/output_45_0.png)
-
+<img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/finding_donors/output_45_0.png"  width="576" height="317">
 
 ### Question 7 - Extracting Feature Importance
 

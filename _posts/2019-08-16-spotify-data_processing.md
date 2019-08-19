@@ -5,7 +5,10 @@ comments: true
 tags: API spotify spotipy python data-mining
 ---
 
-After a first post on data acquisition via the Spotify API, let's move on to the crucial step of each data science project: data processing and cleaning. **Objective of the notebook** : our goal is to process all the useful information that was collected in the previous notebook. Details of the operations performed will be provided as they occur in the notebook.
+After a first post on data acquisition via the Spotify API, let's move on to the crucial step of each data science project: data processing and cleaning. 
+
+### Objective of the notebook
+Our goal is to process all the useful information that was collected in the previous notebook. Details of the operations performed will be provided as they occur in the notebook.
 
 
 ```python

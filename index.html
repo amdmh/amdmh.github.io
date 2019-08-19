@@ -25,7 +25,8 @@ title: Home
             ]
           </span></p>
           <p><span class="post-date">{{ post.date | date_to_string }}</span></p>
-                    
+          <p>{{post.excerpt|strip_html}}</p>
+        
           {{ post.content }}
         </div>
         <hr>

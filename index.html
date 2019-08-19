@@ -26,13 +26,7 @@ title: Home
           </span></p>
           <p><span class="post-date">{{ post.date | date_to_string }}</span></p>
           
-          {% if post.content contains site.excerpt_separator %}
-            {{ post.excerpt }}
-            <a href="{{ post.url }}">Read more</a>
-          {% else %}
-            {{ post.content }}
-          {% endif %}
-
+          
           {{ post.content }}
         </div>
         <hr>

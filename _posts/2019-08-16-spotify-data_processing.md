@@ -50,13 +50,7 @@ final_df.sort_values(by='track_date', inplace=True)
 final_df.reset_index(drop=True, inplace=True)
 ```
 
-We are trying to retrieve the tags corresponding to the song's genres (from a list) and the artist's number of subscribers (from a dictionary)
-
-
-```python
-final_df['artist_genres'] = final_df['artist_genres'].astype(str).str.replace(r"\[","")
-final_df['artist_genres'] = final_df['artist_genres'].str.replace(r"\]","")
-```
+After a first inconclusive attempt to extract the musical genres from the list, it seemed to me to put aside the variable for a future treatment
 
 
 ```python

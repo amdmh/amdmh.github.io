@@ -21,7 +21,7 @@ init_notebook_mode(connected=True)
 import plotly.graph_objs as go
 import plotly.tools as tls
 import plotly.offline as py
-
+```
 
 <script type="text/javascript">
 window.PlotlyConfig = {MathJaxConfig: 'local'};

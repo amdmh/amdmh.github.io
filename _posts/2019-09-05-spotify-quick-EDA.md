@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Spotify Music Analysis : Exploratory Data Analysis "
+title:  "Spotify Music Analysis - Part 3 "
 comments : true
 tags: API spotify spotipy python data-analysis
 ---

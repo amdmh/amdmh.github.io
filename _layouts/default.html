@@ -11,6 +11,13 @@
     <div class="content container">
       {{ content }}
     {% include disqus_comments.html %}
+      
+   <style>
+    .posts > .post {
+        max-height: 300px;
+        overflow:hidden;
+    }
+</style>
 
     </div>
 

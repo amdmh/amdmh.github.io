@@ -1,4 +1,9 @@
-
+---
+layout: post
+title:  "Spotify Music Analysis - Part 3 "
+comments : true
+tags: API spotify spotipy python data-analysis
+---
 
 ```python
 #Import packages
@@ -166,7 +171,7 @@ Image("images/fig1.png")
 
 
 
-![png](output_13_0.png)
+![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/spotify/output_13_0.png)
 
 
 

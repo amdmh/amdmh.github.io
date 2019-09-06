@@ -135,7 +135,7 @@ subplots_positions = create_list_of_positions(numeric_features)
 #import plotly.offline as py#
 ```
 
-After several attempts, it was unable to display Plotly chartsinteractively on Github Pages, the graph rendering is shown below. It was created with the module named orca which allows you to export plotly graphs as static images. Here is the code initially written (which works on Jupyter Notebook) to display the graphs.
+After several attempts, it was unable to display Plotly charts interactively on Github Pages, the graph rendering is shown below. It was created with the module named orca which allows you to export plotly graphs as static images. Here is the code initially written (which works on Jupyter Notebook) to display the graphs.
 
 
 ```python

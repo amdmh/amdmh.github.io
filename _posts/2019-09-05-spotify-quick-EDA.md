@@ -135,10 +135,10 @@ subplots_positions = create_list_of_positions(numeric_features)
 #import plotly.offline as py#
 ```
 
+After several attempts, it was unable to display Plotly chartsinteractively on Github Pages, the graph rendering is shown below. It was created with the module named orca which allows you to export plotly graphs as static images. Here is the code initially written (which works on Jupyter Notebook) to display the graphs.
+
 
 ```python
-# Unable to display Plotly on Github Pages, the graph rendering is shown below - 
-# Module used is orca allows to export plotly graphs as static images
 
 #from plotly.subplots import make_subplots
 #import plotly.graph_objects as go
@@ -168,11 +168,7 @@ from IPython.display import Image
 Image("images/fig1.png")
 ```
 
-
-
-
 ![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/spotify/output_13_0.png)
-
 
 
 At first glance, it seems that the distribution of the song's popularity, age and energy according to the target variable seem quite heterogeneous. Are these the most important variables to make the difference between what I like and where we like? It is too early to say. Next step : modelling ! 

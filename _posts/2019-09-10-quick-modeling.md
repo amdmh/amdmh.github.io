@@ -354,9 +354,6 @@ shap.force_plot(explainer.expected_value[1], shap_values[1], row_for_prediction)
 
 ![png](https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/spotify/value_row.PNG)
 
-
-https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/spotify/value_row.PNG
-
 **N.B.: Due to the lack of dynamic display, it is impossible to present a graph allowing a comparison of the most important variables, line by line.**
 
 To conclude the work that has been done, it is important to remember that despite more than correct accuracy, the model is biased by the fact that it was very difficult to select a representative and as diversified as possible sample for the songs that I did not like, a problem that obviously does not exist for the songs that I like. 

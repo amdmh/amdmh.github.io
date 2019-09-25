@@ -334,7 +334,7 @@ model.predict_proba(row_for_prediction_array)
 
 
 
-Based on the trained model, there's a 96% chance that I like the song - which is If I ruled the world by Nas & Lauryn Hill -
+Based on the trained model, there's a 97% chance that I like the song - which is If I ruled the world by Nas & Lauryn Hill -
 
 
 ```python

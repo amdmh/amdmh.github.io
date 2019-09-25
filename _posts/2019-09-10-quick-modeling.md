@@ -230,11 +230,12 @@ X_test_scale = scaler.transform(X_test)
 
 
 ```python
-X_train_sub, X_validation_sub, y_train_sub, y_validation_sub = train_test_split(X_train_scale, 
-                                                                                y_train,
-                                                                                test_size = 0.2,
-                                                                                train_size= 0.8,
-                                                                                random_state=0)
+X_train_sub, X_validation_sub, y_train_sub, y_validation_sub = 
+train_test_split(X_train_scale,
+                 y_train,
+                 test_size = 0.2,
+                 train_size= 0.8,
+                 random_state=0)
 ```
 
 

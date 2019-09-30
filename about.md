@@ -3,6 +3,9 @@ layout: page
 title: About
 ---
 
+<p align="justify">
+
+
 <p class="message">
   <b> Hey there ! </b>  =)
   
@@ -12,6 +15,8 @@ Student at HETIC in Master Data Analytics & Digital Marketing, I am currently a 
 
 Want to know more? Feel free to consult my Linkedn profile <a href="https://www.linkedin.com/in/mahmd/">here</a>
   
+</p>
+
 </p>
 
 

@@ -5,8 +5,6 @@ title: About
 
 <p align="justify">
 
-
-<p class="message">
   <b> Hey there ! </b>  =)
   
 After more than 6 years in the world of journalism and communication, I decided to give a new direction to my career by moving into the wonderful world of data. 
@@ -17,7 +15,6 @@ Want to know more? Feel free to consult my Linkedn profile <a href="https://www.
   
 </p>
 
-</p>
 
 
 

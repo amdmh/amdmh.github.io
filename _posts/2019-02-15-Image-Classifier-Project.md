@@ -678,4 +678,4 @@ plt.show()
 
 <img src="https://raw.githubusercontent.com/amdmh/amdmh.github.io/master/_posts/img/image_classifier/output_50_1.png"  width="711" height="423">
 
-In addition to the notebook, Feel free to check <a href = "https://drive.google.com/open?id=13uDz_oQdBjxilA3bQA7Zznz3ug_eannM">here</a> the three python files that act as modules to launch the model. 
+In addition to the notebook, feel free to check <a href = "https://drive.google.com/open?id=13uDz_oQdBjxilA3bQA7Zznz3ug_eannM">here</a> the three python files that act as modules to launch the model. 
